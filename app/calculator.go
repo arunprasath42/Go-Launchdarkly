@@ -33,18 +33,22 @@ func (c *Calculator) Run() {
 		fmt.Println("Numbers less than 10 are not allowed to be added")
 	}
 
-	showAdvancedFeatures, _ := c.ldClient.BoolVariation("show-advanced-features", c.user, true)
+	moreFeatures, _ := c.ldClient.BoolVariation("show-more-features", c.user, true)
 
-	if showAdvancedFeatures {
-		fmt.Println("Advanced features are enabled")
+	if moreFeatures {
+		fmt.Println("More features are enabled")
 	} else {
-		fmt.Println("Advanced features are disabled")
+		fmt.Println("More features are disabled")
 	}
+
+	decimalPlaces, _ := c.ldClient.IntVariation("decimal-places", c.user, 2)
+
+	fmt.Printf("Decimal places: %d\n", decimalPlaces)
 
 	fmt.Println("Menu:")
 	fmt.Println("1. Add")
 	fmt.Println("2. Subtract")
-	if showAdvancedFeatures {
+	if moreFeatures {
 		fmt.Println("3. Multiply")
 		fmt.Println("4. Divide")
 	}
@@ -74,16 +78,16 @@ func (c *Calculator) Run() {
 	case 2:
 		fmt.Printf("Result: %f\n", num1-num2)
 	case 3:
-		if showAdvancedFeatures {
+		if moreFeatures {
 			fmt.Printf("Result: %f\n", num1*num2)
 		} else {
-			fmt.Println("Advanced features are disabled")
+			fmt.Println("More features are disabled")
 		}
 	case 4:
-		if showAdvancedFeatures {
+		if moreFeatures {
 			fmt.Printf("Result: %f\n", num1/num2)
 		} else {
-			fmt.Println("Advanced features are disabled")
+			fmt.Println("More features are disabled")
 		}
 	default:
 		fmt.Println("Invalid choice")
