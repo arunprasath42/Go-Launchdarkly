@@ -17,5 +17,3 @@ spec:
       containers:
       - name: go-launchdarkly
         image: 9994810592/go-launchdarkly:1.0.0
-        imagePullPolicy: Always
-
