@@ -9,7 +9,7 @@ RUN go mod download
 RUN go mod tidy
 
 COPY . .
-
+RUN apk add --no-cache git
 RUN go build -o LaunchDarkly .
 
 CMD ["./LaunchDarkly"]
