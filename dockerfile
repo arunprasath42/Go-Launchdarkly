@@ -9,9 +9,6 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o /LaunchDarkly
+RUN go build -o LaunchDarkly .
 
 CMD ["./LaunchDarkly"]
-
-
-
