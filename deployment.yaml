@@ -1,20 +1,21 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: go-launchdarkly
+  labels:
+    app: go-launchdarkly
 spec:
-  destination:
-    name: 'sample-app'
-    namespace: 'argocd'
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: deployment.yaml
-    repoURL: 'https://github.com/arunprasath42/Go-Launchdarkly.git'
-    targetRevision: HEAD
-  sources: []
-  project: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-launchdarkly
+  template:
+    metadata:
+      labels:
+        app: go-launchdarkly
+    spec:
+      containers:
+      - name: go-launchdarkly
+        image: 9994810592/go-launchdarkly:1.0.0
+        imagePullPolicy: Always
 
