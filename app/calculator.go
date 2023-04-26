@@ -26,7 +26,16 @@ func (c *Calculator) Run() {
 		os.Exit(1)
 	}
 
+	stringFlag, _ := c.ldClient.StringVariation("string-input-flag", c.user, "default")
+	if stringFlag == "default" {
+		fmt.Println("Messgae:" + stringFlag)
+		os.Exit(1)
+	} else {
+		fmt.Println("Message:" + stringFlag)
+	}
+
 	boolFlag, _ := c.ldClient.BoolVariation("arun-generic-app", c.user, true)
+	fmt.Println("Feature flag value: ", boolFlag)
 	if boolFlag {
 		fmt.Println(" Numbers greater than 10 are allowed to be added")
 	} else {
