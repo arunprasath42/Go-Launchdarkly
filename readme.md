@@ -1,4 +1,4 @@
- # Project structure
+ # Golang calculator App - Project structure 
 
     ├── app
     ├── dockerfile
