@@ -19,6 +19,6 @@ spec:
         image: 9994810592/go-launchdarkly:1.0.0
         ports:
         - containerPort: 80
-        stdin: false
-        tty: false
+        stdin: true
+        tty: true
 
