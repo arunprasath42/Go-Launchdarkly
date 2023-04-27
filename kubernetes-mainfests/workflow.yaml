@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: go-launchdarkly-
+spec:
+  entrypoint: go-launchdarkly
+  templates:
+  - name: go-launchdarkly
+    inputs:
+      parameters:
+      - name: image
+        value: 9994810592/go-launchdarkly:1.0.0
+    container:
+      image: "{{inputs.parameters.image}}"
+      command: [go-launchdarkly]
+      args: ["--port=80"]
+      resources:
+        limits:
+          memory: 128Mi
+          cpu: 100m
+        requests:
+          memory: 64Mi
+          cpu: 50m
+      stdin: true
+      tty: true
