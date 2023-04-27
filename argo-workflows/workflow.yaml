@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: go-launchdarkly-
+spec:
+  entrypoint: go-launchdarkly
+  templates:
+  - name: go-launchdarkly
+    container:
+      image: 9994810592/go-launchdarkly:1.0.0
+      imagePullPolicy: Always
+      command: ["/bin/sh"]
+      args: ["-c", "echo 'Hello World!' && sleep 10"]
+      resources:
+        limits:
+          memory: 128Mi
+          cpu: 100m
+        requests:
+          memory: 128Mi
+          cpu: 100m
