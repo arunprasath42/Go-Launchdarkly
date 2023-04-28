@@ -35,7 +35,7 @@ func (c *Calculator) Run() {
 	}
 
 	boolFlag, _ := c.ldClient.BoolVariation("arun-generic-app", c.user, true)
-	fmt.Println("Feature flag value: ", boolFlag)
+	fmt.Println("Boolean Feature flag value: ", boolFlag)
 	if boolFlag {
 		fmt.Println(" Numbers greater than 10 are allowed to be added")
 	} else {

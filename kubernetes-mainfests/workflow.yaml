@@ -24,3 +24,10 @@ spec:
           cpu: 50m
       stdin: true
       tty: true
+  - name: deploy
+    dependencies:
+      - go-launchdarkly
+    container:
+      image: alpine/helm:3.6.3
+      command: ["helm"]
+      args: ["upgrade", "--install", "go-launchdarkly", "my-chart", "--set", "image.repository=9994810592/go-launchdarkly", "--set", "image.tag=1.0.0"]
