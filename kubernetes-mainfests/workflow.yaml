@@ -13,7 +13,7 @@ spec:
         value: 9994810592/go-launchdarkly:1.0.0
     container:
       image: "{{inputs.parameters.image}}"
-      command:  ["./LaunchDarkly" ]
+      command:  ["./LaunchDarkly"]
       args: ["--port=80"]
       resources:
         limits:
@@ -22,8 +22,8 @@ spec:
         requests:
           memory: 64Mi
           cpu: 50m
-      stdin: true
-      tty: true
+      stdin: false
+      tty: false
   - name: deploy
     dependencies:
       - go-launchdarkly
